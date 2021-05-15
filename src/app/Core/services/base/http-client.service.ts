@@ -8,7 +8,7 @@ import { HttpParamsQueryString } from "../../models/base/http-client.model";
 export class HttpClientService{
     private readonly urlBase:string;
     constructor(private client:HttpClient){
-        this.urlBase = environment.urlApiV1
+        this.urlBase = environment.urlApiV1;
     }
     Get<TReturn>(completeUrl:string, params:HttpParamsQueryString[] = []):Observable<TReturn> {
         return this.client.get<TReturn>(`${this.urlBase}${completeUrl}${HttpParamsQueryString.GetQueryString(params)}`);
