@@ -3,7 +3,7 @@
         <mat-form-field appearance="outline">
             <mat-label>Nome</mat-label>
             <input class="icon-color-custom" id="register-nome" matInput placeholder="Informe o seu Nome">
-            <mat-hint>Mensagem de erro</mat-hint>
+            <mat-hint >Mensagem de erro</mat-hint>
             <mat-icon class="icon-color-custom" matSuffix>account_circle</mat-icon>
         </mat-form-field>
     </div>
@@ -32,6 +32,6 @@
         </mat-form-field>
     </div>
     <div class="row justify-content-center mt-4">
-        <button id="button-registrar" mat-raised-button color="primary">Cadastrar</button>
+        <button id="button-registrar" mat-raised-button color="primary" (click)="NewClient()">Cadastrar</button>
     </div>
 </div>

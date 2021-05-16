@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ClientService } from "src/app/Core/services/client.service";
+import { ValidateErrorsFormService } from "src/app/Shared/form/validador-form";
+import { ValidadorErrosKeys, ValidadorKeys } from "src/app/Shared/model/validador-key.model";
 
 @Component({
     templateUrl: "./register.component.html",
@@ -13,8 +15,9 @@ import { ClientService } from "src/app/Core/services/client.service";
 export class RegisterComponent implements OnInit{
 
     public form: FormGroup = {} as FormGroup;
+    public errosMsg: ValidadorErrosKeys[] = [];
 
-    constructor(private service: ClientService, private formBuilder: FormBuilder) {
+    constructor(private service: ClientService, private formBuilder: FormBuilder, private validatorMsg: ValidateErrorsFormService) {
     }
 
     ngOnInit(){
@@ -29,7 +32,21 @@ export class RegisterComponent implements OnInit{
             Senha: ["", [Validators.required]]});
     }
 
-    /*NewClient(){
-        this.service.Register()
-    }*/
+    NewClient(): void{
+        if(this.form.valid){
+            this.service.Register(this.form.value);
+        }
+        else{
+            this.errosMsg = this.validatorMsg.GetFormValidationErrors(this.form, this.CreateKeysLabelsErrors());
+            console.log(this.errosMsg.find(x => x.Label === 'Nome')?.Error);
+        }
+    }
+
+    private CreateKeysLabelsErrors = (): ValidadorKeys[] =>
+        [
+            { Label: "Nome", Name: "Nome" },
+            { Label: "CPF", Name: "Cpf"},
+            { Label: "Telefone", Name: "Telefone"},
+            { Label: "Senha", Name: "Senha"}
+        ]
 }
