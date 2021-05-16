@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit{
     public form: FormGroup = {} as FormGroup;
     public errosMsg: ValidadorErrosKeys[] = [];
 
-    constructor(private service: ClientService, private formBuilder: FormBuilder, private validatorMsg: ValidateErrorsFormService) {
+    constructor(private service: ClientService, private formBuilder: FormBuilder, public validatorMsg: ValidateErrorsFormService) {
     }
 
     ngOnInit(){

@@ -3,7 +3,7 @@
         <mat-form-field appearance="outline">
             <mat-label>Nome</mat-label>
             <input class="icon-color-custom" id="register-nome" matInput placeholder="Informe o seu Nome">
-            <mat-hint >Mensagem de erro</mat-hint>
+            <mat-hint style="color: red" *ngIf="validatorMsg.ContemErro(errosMsg, 'Nome')">{{validatorMsg.BuscarMensagemErro(errosMsg, "Nome")}}</mat-hint>
             <mat-icon class="icon-color-custom" matSuffix>account_circle</mat-icon>
         </mat-form-field>
     </div>

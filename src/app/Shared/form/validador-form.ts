@@ -44,4 +44,12 @@ export class ValidateErrorsFormService{
         });
         return errorMessage;
     }
+
+    ContemErro(erros: ValidadorErrosKeys[], label: string):boolean{
+        return erros.find(x => x.Label === label) ? true : false;
+    }
+
+    BuscarMensagemErro(erros: ValidadorErrosKeys[], label: string):string{
+        return erros.find(x => x.Label === label)?.Error || "Não contém erro";
+    }
 }
