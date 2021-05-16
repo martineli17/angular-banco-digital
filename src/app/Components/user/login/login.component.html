@@ -1,22 +1,24 @@
-<div class="col-3">
+<div id="div-login" class="col-3">
+    <form [formGroup]="form">
     <div class="row  justify-content-center">
         <mat-form-field appearance="outline">
-            <mat-label>CPF/CNPJ</mat-label>
+            <mat-label>CPF</mat-label>
             <input class="icon-color-custom" matInput placeholder="Informe o seu CPF/CNPJ">
-            <mat-hint>Mensagem de erro</mat-hint>
+            <mat-hint *ngIf="validatorMsg.ContemErro(errosMsg, 'CPF')">{{validatorMsg.BuscarMensagemErro(errosMsg, "CPF")}}</mat-hint>
             <mat-icon class="icon-color-custom" matSuffix>account_circle</mat-icon>
         </mat-form-field>
     </div>
-    <div class="row justify-content-center mt-3">
+    <div class="row justify-content-center">
         <mat-form-field appearance="outline">
             <mat-label>Senha</mat-label>
             <input type="password" class="text-color-custom" matInput placeholder="Informe sua senha">
-            <mat-hint>Mensagem de erro</mat-hint>
+            <mat-hint *ngIf="validatorMsg.ContemErro(errosMsg, 'Senha')">{{validatorMsg.BuscarMensagemErro(errosMsg, "Senha")}}</mat-hint>
             <mat-icon class="icon-color-custom" matSuffix>lock</mat-icon>
         </mat-form-field>
     </div>
     <div class="row justify-content-center mt-4">
-        <button id="button-entrar" mat-raised-button color="primary">Entrar</button>
+        <button id="button-entrar" mat-raised-button color="primary" (click)="FazerLogin()">Entrar</button>
     </div>
+    </form>
 </div>
 

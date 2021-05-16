@@ -4,3 +4,13 @@ button{
 #button-entrar:hover{
     background-color: rgb(156, 109, 201);
 }
+#div-login{
+    margin-top: 5%;
+    margin-left: 22%;
+    padding-right: 50px;
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: inline-block;
+}
