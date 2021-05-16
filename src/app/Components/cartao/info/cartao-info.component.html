@@ -1,0 +1,39 @@
+<mat-accordion>
+    <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-description>
+                Mais sobre meu cartão
+                <mat-icon style="margin: 0 auto;">add_circle</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <p>
+            <mat-chip>Modo habilitado</mat-chip> {{tipoCartao}}
+        </p>
+        <p>
+            <mat-chip>Status</mat-chip> {{ativo ? "Ativo" : "Desativo"}}
+        </p>
+        <hr>
+        <form [formGroup]="form">
+            <mat-checkbox formControlName="ativo"
+                        [checked]="ativo" 
+                        class="example-margin"
+                        color="primary">
+                        Ativado
+            </mat-checkbox>
+            <p class="mt-3">
+                <mat-form-field appearance="fill">
+                    <mat-label>Habilitar</mat-label>
+                    <mat-select formControlName="tipoCartaoValue" [value]="tipoCartaoValue">
+                        <mat-option value="Debito">Débito</mat-option>
+                        <mat-option value="Credito">Crédito</mat-option>
+                        <mat-option value="Debito_Credito">Débito e Crédito</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </p>
+        </form>
+        <button id="button-alterar-cartao" mat-raised-button color="primary"
+                (click)="AlterarDadosAsync()">
+                Alterar
+        </button>
+    </mat-expansion-panel>
+</mat-accordion>
