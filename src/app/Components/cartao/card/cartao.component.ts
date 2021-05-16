@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { CartaoGetResponse } from "src/app/Core/models/cartao/cartao-get";
+import { AlteracaoDadosCartao } from "src/app/Core/models/cartao/cartao-update.model";
 import TipoCartao from "src/app/Core/models/cartao/tipo-cartao.model";
 import { NotificacaoService } from "src/app/Core/services/base/notificacao.service";
 import { CartaoService } from "src/app/Core/services/cartao.service";
@@ -24,7 +25,7 @@ export class CartaoComponent implements OnInit {
     }
 
     GetTipoCartao = (): string => this.dadosCartao.tipo
-        ? this.dadosCartao.tipo === "Credito"
+        ? this.dadosCartao.tipo.toString() === "Credito"
             ? "Crédito"
             : this.dadosCartao.tipo.toString() === "Debito"
                 ? "Débito"
@@ -43,6 +44,32 @@ export class CartaoComponent implements OnInit {
                 this.notificacao.ExibirNotificacao("Erro ao solicitar cartão!");
             }
         })
+    }
+
+    AlterarDadosAsync = (dados: AlteracaoDadosCartao) => {
+        this.AlterarStatusAsync(dados);
+        this.AlterarTipoAsync(dados);
+        this.notificacao.ExibirNotificacao("Alterações efetuadas com sucesso!");
+        this.dadosCartao.ativo = dados.status;
+        this.dadosCartao.tipo = dados.tipoCartao;
+    }
+
+    private AlterarStatusAsync = (dados: AlteracaoDadosCartao) => {
+        this.cartaoService.MudarStatusAsync(this.dadosCartao.id, dados.status).subscribe({
+            next: response => {},
+             error: response => { 
+                this.notificacao.ExibirNotificacao("Erro ao alterar o status do cartão!");
+            }
+        });
+    }
+
+    private AlterarTipoAsync = (dados: AlteracaoDadosCartao) => {
+        this.cartaoService.MudarTipoAsync(this.dadosCartao.id, dados.tipoCartao).subscribe({
+            next: response => {},
+            error: response => { 
+                this.notificacao.ExibirNotificacao("Erro ao alterar o tipo do cartão!");
+            }
+        });
     }
 
     private GetCartaoPorClienteAsync() {
@@ -70,3 +97,4 @@ export class CartaoComponent implements OnInit {
                                 : "00";
     }
 }
+

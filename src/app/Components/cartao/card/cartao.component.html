@@ -5,10 +5,18 @@
         </bg-cartao-simulador>
     </div>
     <div style="width: 300px; margin: 0 auto; margin-top: 5px;">
-        <button (click)="SolicitarCartao()" *ngIf="!temCartao" id="button-solicitar-cartao" mat-raised-button color="basic">
+        <button (click)="SolicitarCartao()" 
+                *ngIf="!temCartao" id="button-solicitar-cartao" 
+                mat-raised-button color="basic">
             Solicitar cartão
             <mat-icon style="margin: 0 auto;">payment</mat-icon>
         </button>
-        <bg-cartao-info *ngIf="temCartao" [ativo]="dadosCartao.ativo" [tipoCartao]="GetTipoCartao().toString()"></bg-cartao-info>
+        <bg-cartao-info *ngIf="temCartao" 
+                        [ativo]="dadosCartao.ativo"
+                        [tipoCartao]="GetTipoCartao().toString()"
+                        [tipoCartaoValue]="dadosCartao.tipo"
+                        [idCartao]="dadosCartao.id"
+                        (alterarStatus)="AlterarDadosAsync($event)">
+        </bg-cartao-info>
     </div>
 </div>

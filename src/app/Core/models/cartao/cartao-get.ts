@@ -2,8 +2,9 @@ import ClienteGet from "../cliente/cliente-get.model";
 import TipoCartao from "./tipo-cartao.model";
 
 export type CartaoGetResponse = {
+    id: string;
     idCliente: string;
-    tipo: "Debito" | "Credito" | "Debito_Credito";
+    tipo: TipoCartao;
     numero: string;
     ativo: boolean;
     vencimento: Date;
