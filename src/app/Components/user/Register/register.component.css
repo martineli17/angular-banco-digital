@@ -4,3 +4,7 @@ button{
 #button-registrar:hover{
     background-color: rgb(156, 109, 201);
 }
+
+mat-hint{
+    color: red;
+}

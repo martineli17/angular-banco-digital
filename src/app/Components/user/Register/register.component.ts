@@ -38,7 +38,6 @@ export class RegisterComponent implements OnInit{
         }
         else{
             this.errosMsg = this.validatorMsg.GetFormValidationErrors(this.form, this.CreateKeysLabelsErrors());
-            console.log(this.errosMsg.find(x => x.Label === 'Nome')?.Error);
         }
     }
 
