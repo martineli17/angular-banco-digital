@@ -7,7 +7,7 @@ import { IndexModule } from './Core/modules/pages/index.module';
 import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     HttpClientModule,

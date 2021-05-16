@@ -1,16 +1,16 @@
 import { NgModule } from "@angular/core";
-import { LoginComponent } from "src/app/Components/user/login/login.component";
+import {RegisterComponent} from "src/app/Components/user/Register/register.component";
 import { FormsModules } from "../base/form.module";
 import { MaterialModule } from "../base/material.module";
 
 @NgModule({
-    declarations:[LoginComponent],
+    declarations:[RegisterComponent],
     imports:[
         FormsModules,
         MaterialModule,
     ],
-    exports:[LoginComponent,]
+    exports:[RegisterComponent,]
 })
-export class LoginModule{
+export class RegisterModule{
 
 }
