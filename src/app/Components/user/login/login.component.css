@@ -1,15 +1,6 @@
 button{
     width: 50%;
 }
-#button-registre-se{
-    border: 1px solid blueviolet;
-    background-color: black;
-    margin: 8px;
-    position: relative;
-}
 #button-entrar:hover{
-    background-color: rgb(156, 109, 201);
-}
-#button-registre-se:hover{
     background-color: rgb(156, 109, 201);
 }
