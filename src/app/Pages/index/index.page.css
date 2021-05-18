@@ -1,0 +1,15 @@
+#login{
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: inline-block;
+}
+#register{
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: inline-block;
+}
+
