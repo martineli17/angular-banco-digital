@@ -1,4 +1,6 @@
 import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { LoginComponent } from "src/app/Components/user/login/login.component";
 import { RegisterClient } from "../models/register-client.model";
 import { HttpClientService } from "./base/http-client.service";
 
@@ -12,10 +14,11 @@ export class ClientService{
     }
 
     Register(model: RegisterClient): void{
+        console.log("ok")
         this.httpClient.Add("cliente", model);
     }
 
-    Login(): void{
-        
+    Login(cpfCliente: string): Observable<string>{
+        return this.httpClient.Add<string, {}>("autenticacao", {cpf: cpfCliente});
     }
 }
