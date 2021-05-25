@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { LoginComponent } from "src/app/Components/user/login/login.component";
+import LoginModel from "../models/cliente/login.model";
 import { RegisterClient } from "../models/register-client.model";
 import { HttpClientService } from "./base/http-client.service";
 
@@ -18,7 +19,17 @@ export class ClientService{
         this.httpClient.Add("cliente", model);
     }
 
-    Login(cpfCliente: string): Observable<string>{
-        return this.httpClient.Add<string, {}>("autenticacao", {cpf: cpfCliente});
+    async Login(cpfCliente: LoginModel): Promise<boolean>{
+  
+        var retorno = true;
+        try{
+            const token = await this.httpClient.Add<string, {}>("autenticacao", cpfCliente).toPromise();
+            localStorage.setItem("acess_token",  token);
+            this.httpClient.SetHeaderAuthorizationBearer()
+            return true;
+        }
+        catch{
+            return false;
+        }  
     }
 }

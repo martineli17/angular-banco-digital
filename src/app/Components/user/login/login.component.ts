@@ -36,20 +36,18 @@ export class LoginComponent implements OnInit{
            {Cpf: ["", [Validators.required, Validators.maxLength(11)]]});
     }
 
-    FazerLogin(): void{
+    async FazerLogin(): Promise<void>{
         console.log(this.form.value)
         if(this.form.valid){
-            this.service.Login(this.form.value).subscribe({
-                next: response => {
-                    this.cpfCnpj = response;
-                },error: response => {
-                    console.log(response);
-                    this.notificacao.ExibirNotificacao("Erro ao fazer o login!");
-                }
-            });
+            var result = await this.service.Login(this.form.value);
+            console.log(result);
+            if(result === false){
+                this.notificacao.ExibirNotificacao("Usuário não cadastrado!!!")
+            }
         }
         else{
             this.errosMsg = this.validatorMsg.GetFormValidationErrors(this.form, this.CreateKeysLabelsErrors());
+            this.notificacao.ExibirNotificacao("Usuário não cadastrado!!!");
         }
     }
 
