@@ -11,11 +11,10 @@ import { CartaoService } from "src/app/Core/services/cartao.service";
     selector: "bg-cartao",
 })
 export class CartaoComponent implements OnInit {
-    @Input() idCliente: string = "";
     temCartao: boolean = false;
     dadosCartao: CartaoGetResponse = {} as CartaoGetResponse;
     anoVencimentoCartao: string = "0000";
-    mesVencimentoCartao: string = "0000";
+    mesVencimentoCartao: string = "00";
     constructor(private cartaoService: CartaoService,
                 private notificacao: NotificacaoService) {
                  
@@ -33,7 +32,7 @@ export class CartaoComponent implements OnInit {
         : "Não identificado";
 
     SolicitarCartao = () => {
-        this.cartaoService.SolicitarAsync({IdCliente: this.idCliente, Tipo: TipoCartao.Debito}).subscribe({
+        this.cartaoService.SolicitarAsync({Tipo: TipoCartao.Debito}).subscribe({
             next: response => {
                 this.dadosCartao = response;
                 this.temCartao = true;
@@ -55,7 +54,7 @@ export class CartaoComponent implements OnInit {
     }
 
     private AlterarStatusAsync = (dados: AlteracaoDadosCartao) => {
-        this.cartaoService.MudarStatusAsync(this.dadosCartao.id, dados.status).subscribe({
+        this.cartaoService.MudarStatusAsync(dados.status).subscribe({
             next: response => {},
              error: response => { 
                 this.notificacao.ExibirNotificacao("Erro ao alterar o status do cartão!");
@@ -64,7 +63,7 @@ export class CartaoComponent implements OnInit {
     }
 
     private AlterarTipoAsync = (dados: AlteracaoDadosCartao) => {
-        this.cartaoService.MudarTipoAsync(this.dadosCartao.id, dados.tipoCartao).subscribe({
+        this.cartaoService.MudarTipoAsync(dados.tipoCartao).subscribe({
             next: response => {},
             error: response => { 
                 this.notificacao.ExibirNotificacao("Erro ao alterar o tipo do cartão!");
@@ -73,9 +72,9 @@ export class CartaoComponent implements OnInit {
     }
 
     private GetCartaoPorClienteAsync() {
-        this.cartaoService.GetByIdClienteAsync(this.idCliente).subscribe({
+        this.cartaoService.GetByIdAsync().subscribe({
             next: response => {
-                this.dadosCartao = response[0];
+                this.dadosCartao = response;
                 this.temCartao = this.dadosCartao ? true : false;
                 this.dadosCartao = this.dadosCartao ? this.dadosCartao  
                                     : 

@@ -11,7 +11,6 @@ export class CartaoInfoComponent implements OnInit{
     @Input() ativo: boolean = false;
     @Input() tipoCartao: string = "";
     @Input() tipoCartaoValue: TipoCartao = TipoCartao.Debito;
-    @Input() idCartao: string = "";
     @Output() alterarStatus = new EventEmitter<AlteracaoDadosCartao>();
     form: FormGroup = {} as FormGroup;
     

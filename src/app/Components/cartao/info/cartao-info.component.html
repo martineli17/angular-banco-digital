@@ -7,10 +7,20 @@
             </mat-panel-description>
         </mat-expansion-panel-header>
         <p>
-            <mat-chip>Modo habilitado</mat-chip> {{tipoCartao}}
+            <span>Modo habilitado</span>
+            <span style="font-size: small; font-family: Arial, Helvetica, sans-serif;" 
+                    class="badge bg-light text-dark m-lg-2">
+                {{tipoCartao}} 
+            </span>
         </p>
         <p>
-            <mat-chip>Status</mat-chip> {{ativo ? "Ativo" : "Desativo"}}
+            <span>Status</span>
+            <span style="font-size: small; font-family: Arial, Helvetica, sans-serif;" 
+                    [ngClass]="{'bg-danger': !ativo, 'bg-success': ativo}" 
+                    class="badge m-lg-2">
+                {{ativo ? "Ativado" : "Desativado"}}
+            </span>
+            <!-- <mat-chip>Status</mat-chip> {{ativo ? "Ativo" : "Desativo"}} -->
         </p>
         <hr>
         <form [formGroup]="form">

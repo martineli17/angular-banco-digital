@@ -16,8 +16,8 @@ export class HttpClientService{
         return this.client.get<TReturn>(`${this.urlBase}${completeUrl}${HttpParamsQueryString.GetQueryString(params)}`, {headers: this.headers});
     }
 
-    Delete(completeUrl:string):Observable<any> {
-        return this.client.delete<any>(`${this.urlBase}${completeUrl}`, {headers: this.headers});
+    Delete<TReturn>(completeUrl:string):Observable<TReturn> {
+        return this.client.delete<TReturn>(`${this.urlBase}${completeUrl}`, {headers: this.headers});
     }
 
     Add<TReturn, TData>(completeUrl:string, data:TData):Observable<TReturn> {

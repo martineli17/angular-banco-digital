@@ -1,0 +1,60 @@
+<div>
+    <button (click)="Solicitar()" *ngIf="!temConta" id="button-solicitar-cartao" mat-raised-button color="basic">
+        Solicitar conta
+        <mat-icon style="margin: 0 auto;">payment</mat-icon>
+    </button>
+    <mat-accordion *ngIf="temConta">
+        <mat-expansion-panel hideToggle>
+            <mat-expansion-panel-header>
+                <mat-panel-description>
+                    Mais sobre minha conta
+                    <mat-icon style="margin: 0 auto;">add_circle</mat-icon>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>
+                <span>Número</span>
+                <span style="font-size: small; font-family: Arial, Helvetica, sans-serif;"
+                    class="badge bg-light text-dark m-lg-2">
+                    {{dadosConta.numero}}
+                </span>
+            </p>
+            <p>
+                <span>Saldo</span>
+                <span style="font-size: small; font-family: Arial, Helvetica, sans-serif;"
+                    class="badge bg-light text-dark m-lg-2">
+                    {{dadosConta.saldo | currency}}
+                </span>
+            </p>
+            <p>
+                <span>Status</span>
+                <span style="font-size: small; font-family: Arial, Helvetica, sans-serif;"
+                    [ngClass]="{'bg-danger': !dadosConta.ativo, 'bg-success': dadosConta.ativo}" class="badge m-lg-2">
+                    {{dadosConta.ativo ? "Ativada" : "Desativada"}}
+                </span>
+            </p>
+            <hr>
+            <form>
+                <p class="mt-3">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Tipo</mat-label>
+                        <mat-select [(value)]="dadosConta.tipo">
+                            <mat-option value="Poupanca">Poupança</mat-option>
+                            <mat-option value="Corrente">Corrente</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </p>
+            </form>
+            <button id="button-tipo-conta" mat-raised-button color="primary" (click)="AtualizarTipo()">
+                Alterar
+            </button>
+            <button *ngIf="dadosConta.ativo" style="margin-left: 4px" id="button-alterar-conta" mat-raised-button
+                color="light" (click)="AtualizarStatus(false)">
+                Desativar
+            </button>
+            <button *ngIf="!dadosConta.ativo" style="margin-left: 4px" id="button-ativar-conta" mat-raised-button
+                color="light" (click)="AtualizarStatus(true)">
+                Ativar
+            </button>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

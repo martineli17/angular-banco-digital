@@ -16,6 +16,8 @@ export class ClientService{
     }
 
     Login(): void{
-        
+        var tkoen = "";
+        localStorage.setItem("acess_token", tkoen);
+        this.httpClient.SetHeaderAuthorizationBearer();
     }
 }

@@ -14,14 +14,11 @@ export class CartaoService {
     SolicitarAsync = (cartaoRequest: CartaoAddRequest): Observable<CartaoGetResponse> =>
         this.client.Add<CartaoGetResponse, CartaoAddRequest>("cartao", cartaoRequest);
 
-    MudarStatusAsync = (id: string, status: boolean): Observable<boolean> =>
-        this.client.Update<boolean, any>(`cartao/status/${id}/${status}`, null);
+    MudarStatusAsync = (status: boolean): Observable<boolean> =>
+        this.client.Update<boolean, any>(`cartao/status/${status}`, null);
 
-    MudarTipoAsync = (id: string, tipo: TipoCartao): Observable<boolean> =>
-        this.client.Update<boolean, any>(`cartao/tipo/${id}/${tipo}`, null);
+    MudarTipoAsync = (tipo: TipoCartao): Observable<boolean> =>
+        this.client.Update<boolean, any>(`cartao/tipo/${tipo}`, null);
 
-    GetByIdAsync = (id: string): Observable<CartaoGetResponse> => this.client.Get<CartaoGetResponse>(`cartao/${id}`);
-    
-    GetByIdClienteAsync = (id: string): Observable<CartaoGetResponse[]> => 
-        this.client.Get<CartaoGetResponse[]>(`cartao?$filter=IdCliente eq ${id}`);
+    GetByIdAsync = (): Observable<CartaoGetResponse> => this.client.Get<CartaoGetResponse>(`cartao/cliente`);
 }
