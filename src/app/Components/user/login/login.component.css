@@ -28,3 +28,6 @@ img{
     width: 30%;
     height: 30%;
 }
+mat-hint{
+    color: red;
+}

@@ -28,12 +28,12 @@ export class RegisterComponent implements OnInit{
         this.form = this.formBuilder.group(
             {Nome: ["", [Validators.required, Validators.maxLength(100)]],
             Cpf: ["", [Validators.required, Validators.maxLength(11)]],
-            Telefone: ["", [Validators.required, Validators.maxLength(11)]],
-            Senha: ["", [Validators.required]]});
+            Telefone: ["", [Validators.required, Validators.maxLength(11)]]});
     }
 
     NewClient(): void{
         if(this.form.valid){
+            console.log(this.form.value);
             this.service.Register(this.form.value);
         }
         else{
@@ -45,7 +45,6 @@ export class RegisterComponent implements OnInit{
         [
             { Label: "Nome", Name: "Nome" },
             { Label: "CPF", Name: "Cpf"},
-            { Label: "Telefone", Name: "Telefone"},
-            { Label: "Senha", Name: "Senha"}
+            { Label: "Telefone", Name: "Telefone"}
         ]
 }
