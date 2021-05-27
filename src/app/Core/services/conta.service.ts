@@ -6,21 +6,18 @@ import { ContaUpdateStatusModel } from "../models/conta/conta-update.mode";
 import { HttpClientService } from "./base/http-client.service";
 
 @Injectable({providedIn: "root"})
-export class ContaService{
-    constructor(private httpClient: HttpClientService){
-
-    }
+export class ContaService extends HttpClientService{
 
     SolicitarAsync = (conta: ContaAddRequestModel):Observable<ContaGetModel> => 
-        this.httpClient.Add<ContaGetModel,ContaAddRequestModel>("conta", conta);
+        this.Add<ContaGetModel,ContaAddRequestModel>("conta", conta);
 
-    ExcluirAsync = ():Observable<boolean> => this.httpClient.Delete<boolean>(`conta`);
+    ExcluirAsync = ():Observable<boolean> => this.Delete<boolean>(`conta`);
 
-    GetAsync = ():Observable<ContaGetModel> => this.httpClient.Get<ContaGetModel>(`conta/cliente`);
+    GetAsync = ():Observable<ContaGetModel> => this.Get<ContaGetModel>(`conta/cliente`);
 
     AtualizarTipoAsync = (conta: ContaAddRequestModel):Observable<ContaGetModel> => 
-        this.httpClient.Update<ContaGetModel,ContaAddRequestModel>("conta/tipo", conta);
+        this.Update<ContaGetModel,ContaAddRequestModel>("conta/tipo", conta);
 
     AtualizarStatusAsync = (conta: ContaUpdateStatusModel):Observable<ContaGetModel> => 
-        this.httpClient.Update<ContaGetModel,ContaUpdateStatusModel>("conta/status", conta);
+        this.Update<ContaGetModel,ContaUpdateStatusModel>("conta/status", conta);
 }

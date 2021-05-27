@@ -6,7 +6,7 @@ import { ContaService } from "src/app/Core/services/conta.service";
 
 @Component({
     templateUrl: "./conta.component.html",
-    selector: "bg-conta"
+    selector: "bd-conta"
 })
 export class ContaComponent implements OnInit {
     dadosConta: ContaGetModel = {} as ContaGetModel;
@@ -27,7 +27,7 @@ export class ContaComponent implements OnInit {
                 this.notificador.ExibirNotificacao("Sua conta foi criada com sucesso.");
             },
             error: error => {
-                this.notificador.ExibirNotificacao("Erro ao solicitar sua conta.");
+                this.contaService.ErrorHandler(error, {mensagem404: "Registro não encontrado"});
             }
         });
     }
@@ -40,10 +40,7 @@ export class ContaComponent implements OnInit {
               
             },
             error: error => {
-                if (error.status === 404)
-                    this.notificador.ExibirNotificacao("Você ainda não solicitou a criação de uma conta.");
-                else
-                    this.notificador.ExibirNotificacao("Erro ao buscar dados da conta.");
+                this.contaService.ErrorHandler(error, {mensagem404: "Você ainda não solicitou a criação de uma conta."});
             }
         });
     }
@@ -55,7 +52,7 @@ export class ContaComponent implements OnInit {
                 this.notificador.ExibirNotificacao("Sua conta foi atualizada com sucesso.");
             },
             error: error => {
-                this.notificador.ExibirNotificacao("Erro ao atualizar dados da sua conta.");
+                this.contaService.ErrorHandler(error, {mensagem404: "Você ainda não solicitou a criação de uma conta."});
             }
         });
     }
@@ -67,7 +64,7 @@ export class ContaComponent implements OnInit {
                 this.notificador.ExibirNotificacao("Sua conta foi atualizada com sucesso.");
             },
             error: error => {
-                this.notificador.ExibirNotificacao("Erro ao atualizar dados da sua conta.");
+                this.contaService.ErrorHandler(error, {mensagem404: "Você ainda não solicitou a criação de uma conta."});
             }
         });
     }

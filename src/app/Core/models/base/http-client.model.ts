@@ -11,3 +11,7 @@ export class HttpParamsQueryString{
         return queryString;
     }
 }
+
+export type HandlerErrorModel = {
+    mensagem404: string;
+}

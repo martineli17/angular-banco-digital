@@ -1,8 +1,8 @@
 <div class="col">
     <div>
-        <bg-cartao-simulador [anoValidade]="anoVencimentoCartao" [mesValidade]="mesVencimentoCartao"
+        <bd-cartao-simulador [anoValidade]="anoVencimentoCartao" [mesValidade]="mesVencimentoCartao"
             [numero]="dadosCartao.numero">
-        </bg-cartao-simulador>
+        </bd-cartao-simulador>
     </div>
     <div style="width: 300px; margin: 0 auto; margin-top: 5px;">
         <button (click)="SolicitarCartao()" 
@@ -11,11 +11,11 @@
             Solicitar cartão
             <mat-icon style="margin: 0 auto;">payment</mat-icon>
         </button>
-        <bg-cartao-info *ngIf="temCartao" 
+        <bd-cartao-info *ngIf="temCartao" 
                         [ativo]="dadosCartao.ativo"
                         [tipoCartao]="GetTipoCartao().toString()"
                         [tipoCartaoValue]="dadosCartao.tipo"
                         (alterarStatus)="AlterarDadosAsync($event)">
-        </bg-cartao-info>
+        </bd-cartao-info>
     </div>
 </div>

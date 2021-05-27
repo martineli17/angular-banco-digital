@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Component, Input, OnInit } from "@angular/core";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { CartaoGetResponse } from "src/app/Core/models/cartao/cartao-get";
@@ -8,7 +9,7 @@ import { CartaoService } from "src/app/Core/services/cartao.service";
 
 @Component({
     templateUrl: "./cartao.component.html",
-    selector: "bg-cartao",
+    selector: "bd-cartao",
 })
 export class CartaoComponent implements OnInit {
     temCartao: boolean = false;
@@ -39,8 +40,8 @@ export class CartaoComponent implements OnInit {
                 this.FormatarDataVencimentoCartao();
                 this.notificacao.ExibirNotificacao("Cartão solicitado com sucesso!");
             },
-            error: response => {
-                this.notificacao.ExibirNotificacao("Erro ao solicitar cartão!");
+            error: (error:HttpErrorResponse) => {
+                this.cartaoService.ErrorHandler(error, {mensagem404: "Cartão não encontrado"});
             }
         })
     }
@@ -56,8 +57,8 @@ export class CartaoComponent implements OnInit {
     private AlterarStatusAsync = (dados: AlteracaoDadosCartao) => {
         this.cartaoService.MudarStatusAsync(dados.status).subscribe({
             next: response => {},
-             error: response => { 
-                this.notificacao.ExibirNotificacao("Erro ao alterar o status do cartão!");
+             error: (error: HttpErrorResponse) => { 
+                this.cartaoService.ErrorHandler(error, {mensagem404: "Cartão não encontrado"});
             }
         });
     }
@@ -65,8 +66,8 @@ export class CartaoComponent implements OnInit {
     private AlterarTipoAsync = (dados: AlteracaoDadosCartao) => {
         this.cartaoService.MudarTipoAsync(dados.tipoCartao).subscribe({
             next: response => {},
-            error: response => { 
-                this.notificacao.ExibirNotificacao("Erro ao alterar o tipo do cartão!");
+            error: (error: HttpErrorResponse) => { 
+                this.cartaoService.ErrorHandler(error, {mensagem404: "Cartão não encontrado"});
             }
         });
     }
@@ -81,7 +82,8 @@ export class CartaoComponent implements OnInit {
                                    {numero: "0000 0000 0000 0000"} as CartaoGetResponse;
                 this.FormatarDataVencimentoCartao();
             },
-            error: response => {
+            error: (error: HttpErrorResponse) => {
+                this.cartaoService.ErrorHandler(error, {mensagem404: "Cartão não encontrado"});
                 this.temCartao = false;
             }
         });

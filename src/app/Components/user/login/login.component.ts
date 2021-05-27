@@ -30,26 +30,24 @@ export class LoginComponent implements OnInit{
     ngOnInit(){
         this.CreateForm();
     }
+   
+    async FazerLogin(): Promise<void>{
+        if(this.form.valid){
+            var result = await this.service.Login(this.form.value);
+            if(result === false){
+                this.notificacao.ExibirNotificacao("Cliente não cadastrado!")
+            }
+        }
+        else{
+            this.errosMsg = this.validatorMsg.GetFormValidationErrors(this.form, this.CreateKeysLabelsErrors());
+        }
+    }
 
     private CreateForm(): void{
         this.form = this.formBuilder.group(
            {Cpf: ["", [Validators.required, Validators.maxLength(11)]]});
     }
 
-    async FazerLogin(): Promise<void>{
-        console.log(this.form.value)
-        if(this.form.valid){
-            var result = await this.service.Login(this.form.value);
-            console.log(result);
-            if(result === false){
-                this.notificacao.ExibirNotificacao("Usuário não cadastrado!!!")
-            }
-        }
-        else{
-            this.errosMsg = this.validatorMsg.GetFormValidationErrors(this.form, this.CreateKeysLabelsErrors());
-            this.notificacao.ExibirNotificacao("Usuário não cadastrado!!!");
-        }
-    }
 
     private CreateKeysLabelsErrors = (): ValidadorKeys[] =>
     [

@@ -5,7 +5,7 @@ import TipoCartao from "src/app/Core/models/cartao/tipo-cartao.model";
 
 @Component({
     templateUrl: "./cartao-info.component.html",
-    selector: "bg-cartao-info",
+    selector: "bd-cartao-info",
 })
 export class CartaoInfoComponent implements OnInit{
     @Input() ativo: boolean = false;

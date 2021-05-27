@@ -8,24 +8,18 @@ import { HttpClientService } from "./base/http-client.service";
 @Injectable({
     providedIn: 'root'
 })
-export class ClientService{
+export class ClientService extends HttpClientService{
 
-    constructor(private httpClient: HttpClientService){
-
-    }
-
-    Register(model: RegisterClient): void{
-        console.log("ok")
-        this.httpClient.Add("cliente", model);
+    Register(model: RegisterClient): Observable<void>{
+        return this.Add("cliente", model);
     }
 
     async Login(cpfCliente: LoginModel): Promise<boolean>{
-  
         var retorno = true;
         try{
-            const token = await this.httpClient.Add<string, {}>("autenticacao", cpfCliente).toPromise();
+            const token = await this.Add<string, {}>("autenticacao", cpfCliente).toPromise();
             localStorage.setItem("acess_token",  token);
-            this.httpClient.SetHeaderAuthorizationBearer()
+            this.SetHeaderAuthorizationBearer()
             return true;
         }
         catch{

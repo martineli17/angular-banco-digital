@@ -50,6 +50,6 @@ export class ValidateErrorsFormService{
     }
 
     BuscarMensagemErro(erros: ValidadorErrosKeys[], label: string):string{
-        return erros.find(x => x.Label === label)?.Error || "Não contém erro";
+        return erros.find(x => x.Label == label)?.Error || "Erro";
     }
 }
