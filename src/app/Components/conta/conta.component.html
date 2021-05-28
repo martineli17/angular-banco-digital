@@ -1,14 +1,14 @@
 <div>
-    <button (click)="Solicitar()" *ngIf="!temConta" id="button-solicitar-cartao" mat-raised-button color="basic">
+    <button (click)="Solicitar()" *ngIf="!temConta" id="button-solicitar-cartao" 
+            mat-raised-button color="basic">
         Solicitar conta
         <mat-icon style="margin: 0 auto;">payment</mat-icon>
     </button>
     <mat-accordion *ngIf="temConta">
-        <mat-expansion-panel hideToggle>
+        <mat-expansion-panel>
             <mat-expansion-panel-header>
                 <mat-panel-description>
                     Mais sobre minha conta
-                    <mat-icon style="margin: 0 auto;">add_circle</mat-icon>
                 </mat-panel-description>
             </mat-expansion-panel-header>
             <p>

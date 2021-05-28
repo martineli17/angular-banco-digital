@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { IndexPage } from "src/app/Pages/index/index.page";
+import { MaterialModule } from "../base/material.module";
 import { LoginModule } from "../components/login.module";
 import {RegisterModule} from "../components/register.module";
 import { HomeModule } from "./home.module";
@@ -10,6 +11,7 @@ import { HomeModule } from "./home.module";
         LoginModule,
         RegisterModule,
         HomeModule,
+        MaterialModule,
     ]
 })
 export class IndexModule{
