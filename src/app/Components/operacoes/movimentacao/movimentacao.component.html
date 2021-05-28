@@ -21,13 +21,13 @@
                 <th>{{count+1}}</th>
                 <td>{{movimentacao.dataCriacao | date: 'dd/MM/yyyy hh:mm:ss'}}</td>
                 <td>{{movimentacao.valor | currency}}</td>
-                <td>{{GetEventoString(movimentacao.evento)}}</td>
+                <td>{{movimentacao.eventoNome}}</td>
                 <td>
                     <span style="font-size: small; font-family: Arial, Helvetica, sans-serif;"
-                    [ngClass]="{'bg-danger': !GetTipoBoolean(movimentacao.tipo), 
-                                'bg-success': GetTipoBoolean(movimentacao.tipo)}"
+                    [ngClass]="{'bg-danger': !movimentacao.isCredito, 
+                                'bg-success': movimentacao.isCredito}"
                     class="badge m-lg-2">
-                    {{GetTipoString(movimentacao.tipo)}}
+                    {{movimentacao.tipoNome}}
                 </span>
               </tr>
             </tbody>
