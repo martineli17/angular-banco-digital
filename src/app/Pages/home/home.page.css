@@ -1,0 +1,11 @@
+h2{
+    border-bottom: 1px solid rgba(92, 92, 92, 0.5); 
+    color: whitesmoke
+}
+img{
+    margin-left: 90%;
+    width: 120px;
+    height: 90px;
+    border-bottom: 5px solid white;
+    float: right;
+}
