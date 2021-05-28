@@ -10,7 +10,7 @@ import { ValidadorErrosKeys, ValidadorKeys } from "src/app/Shared/model/validado
 
 @Component({
     templateUrl: "./transferencia.component.html",
-    selector: "bd-deposito",
+    selector: "bd-transferencia",
     styleUrls: ["../../../Shared/styles/inputs.style.css",]
 })
 export class TransferenciaComponent implements OnInit {
@@ -49,7 +49,7 @@ export class TransferenciaComponent implements OnInit {
                 else
                     this.notificador.ExibirNotificacao("Nenhuma conta disponível para transferência.");
             },
-            error: (error: HttpErrorResponse){
+            error: (error: HttpErrorResponse) => {
                 this.contaService.ErrorHandler(error, { mensagem404: "Registro não encontrado."});
             }
         })

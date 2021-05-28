@@ -16,8 +16,8 @@
     </div>
     <div class="row  justify-content-center">
         <mat-form-field appearance="outline">
-            <mat-label>Identificador Caixa</mat-label>
-            <input formControlName="identificadorCaixaEletronico" class="text-color-custom" matInput placeholder="Informe o valor desejado">
+            <mat-label>Identificador Caixa Eletrônico</mat-label>
+            <input formControlName="identificadorCaixaEletronico" class="text-color-custom" matInput placeholder="Informe o identificador caixa eletrônico">
             <mat-hint  class="erro-message"
                 *ngIf="validatorMsg.ContemErro(errosForm, 'Identificador Caixa Eletrônico')">
                 {{validatorMsg.BuscarMensagemErro(errosForm, "Identificador Caixa Eletrônico")}}
