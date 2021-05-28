@@ -1,0 +1,25 @@
+<div class="col-3">
+    <form [formGroup]="form">
+    <div class="row  justify-content-center">
+        <mat-form-field appearance="outline">
+            <mat-label>Valor</mat-label>
+            <input formControlName="valor" 
+                type="number"
+                class="text-color-custom"
+                matInput placeholder="Informe o valor desejado">
+            <mat-hint class="erro-message"
+                *ngIf="validatorMsg.ContemErro(errosForm, 'Valor')">
+                {{validatorMsg.BuscarMensagemErro(errosForm, "Valor")}}
+            </mat-hint>
+            <mat-icon class="icon-color-custom" matSuffix>monetization_on</mat-icon>
+        </mat-form-field>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <button id="button-sacar" 
+                mat-raised-button color="primary" 
+                (click)="Transferir()">
+                Transferir
+        </button>
+    </div>
+    </form>
+</div>

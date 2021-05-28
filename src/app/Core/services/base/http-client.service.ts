@@ -10,7 +10,7 @@ import { of } from 'rxjs';
 export class HttpClientService{
     private readonly urlBase:string;
     private headers:HttpHeaders = new HttpHeaders();
-    constructor(private client:HttpClient, private notificador: NotificacaoService){
+    constructor(private client:HttpClient){
         this.urlBase = environment.urlApiV1;
         this.headers.append("Content-Type", "application/json");
     }
@@ -39,7 +39,12 @@ export class HttpClientService{
     SetHeaderAuthorizationBearer(){
         this.headers.append("Authorization", `Bearer ${localStorage.getItem("acess_token")}`);
     }
+}
 
+export class HttpClienteBasic{
+    constructor(protected notificador: NotificacaoService){
+
+    }
     public ErrorHandler(error: HttpErrorResponse, handlerModel: HandlerErrorModel) {
         if(error.status === 400)
             this.notificador.ExibirNotificacao(error.error[0].mensagem);

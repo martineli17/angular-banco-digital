@@ -7,20 +7,26 @@ import { SaqueAddRequest } from "../models/operacoes/saque/saque-add.model";
 import { SaqueAddResponse } from "../models/operacoes/saque/saque-response.model";
 import { TransferenciaAddRequest } from "../models/operacoes/transferencia/transferencia-add.model";
 import { TransferenciaAddResponse } from "../models/operacoes/transferencia/transferencia-response.model";
-import { HttpClientService } from "./base/http-client.service";
+import { HttpClientService, HttpClienteBasic } from "./base/http-client.service";
+import { NotificacaoService } from "./base/notificacao.service";
 
 @Injectable({ providedIn: "root" })
-export class OperacoesService extends HttpClientService  {
+export class OperacoesService extends HttpClienteBasic{
+
+    constructor(private client: HttpClientService, 
+                protected notificador: NotificacaoService){
+        super(notificador);
+    }
     
     TransferirAsync = (dados: TransferenciaAddRequest):Observable<TransferenciaAddResponse> =>
-        this.Add<TransferenciaAddResponse, TransferenciaAddRequest>("operacao/transferencia", dados);
+        this.client.Add<TransferenciaAddResponse, TransferenciaAddRequest>("operacao/transferencia", dados);
 
     DepositarAsync = (dados: DepositoAddRequest):Observable<DepositoAddResponse> =>
-        this.Add<DepositoAddResponse, DepositoAddRequest>("operacao/deposito", dados);
+        this.client.Add<DepositoAddResponse, DepositoAddRequest>("operacao/deposito", dados);
 
     SacarAsync = (dados: SaqueAddRequest):Observable<SaqueAddResponse> =>
-        this.Add<SaqueAddResponse, SaqueAddRequest>("operacao/saque", dados);
+        this.client.Add<SaqueAddResponse, SaqueAddRequest>("operacao/saque", dados);
 
     MovimentacoesAsync = ():Observable<MovimentacaoResponse[]> =>
-        this.Get<MovimentacaoResponse[]>("operacao/movimentacao");
+        this.client.Get<MovimentacaoResponse[]>("operacao/movimentacao");
 }

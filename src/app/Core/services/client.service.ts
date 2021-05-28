@@ -3,23 +3,30 @@ import { Observable } from "rxjs";
 import { LoginComponent } from "src/app/Components/user/login/login.component";
 import LoginModel from "../models/cliente/login.model";
 import { RegisterClient } from "../models/register-client.model";
-import { HttpClientService } from "./base/http-client.service";
+import { HttpClientService, HttpClienteBasic } from "./base/http-client.service";
+import { NotificacaoService } from "./base/notificacao.service";
 
 @Injectable({
     providedIn: 'root'
 })
-export class ClientService extends HttpClientService{
+export class ClientService extends HttpClienteBasic{
+
+    constructor(private client: HttpClientService, 
+                protected notificador: NotificacaoService){
+        super(notificador);
+    }
+    
 
     Register(model: RegisterClient): Observable<void>{
-        return this.Add("cliente", model);
+        return this.client.Add("cliente", model);
     }
 
     async Login(cpfCliente: LoginModel): Promise<boolean>{
         var retorno = true;
         try{
-            const token = await this.Add<string, {}>("autenticacao", cpfCliente).toPromise();
+            const token = await this.client.Add<string, {}>("autenticacao", cpfCliente).toPromise();
             localStorage.setItem("acess_token",  token);
-            this.SetHeaderAuthorizationBearer()
+            this.client.SetHeaderAuthorizationBearer()
             return true;
         }
         catch{
