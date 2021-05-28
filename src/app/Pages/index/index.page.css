@@ -1,15 +1,22 @@
-#login{
-    position: relative;
+h2{
+    color: white;
+    font-size: 30px;
     text-align: center;
     justify-content: center;
-    align-items: center;
-    display: inline-block;
+    margin: 10px;
+    margin-bottom: 15px;
 }
-#register{
-    position: relative;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    display: inline-block;
+
+img{
+    margin-top: 0px;
+    margin-bottom: 5px;
+    width: 200px;
+    height: 150px;
+    border-bottom: 5px solid white;
+}
+
+hr{
+    color: white;
+    width: 90%;
 }
 

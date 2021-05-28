@@ -1,32 +1,37 @@
-<div id="div-register" class="col-3">
-    <form id="form-register" [formGroup]="form">
-        <div class="row  justify-content-center">
-            <mat-form-field appearance="outline">
-                <mat-label>Nome</mat-label>
-                <input formControlName="Nome" class="icon-color-custom" id="register-nome" matInput placeholder="Informe o seu Nome">
-                <mat-hint  *ngIf="validatorMsg.ContemErro(errosMsg, 'Nome')">{{validatorMsg.BuscarMensagemErro(errosMsg, "Nome")}}</mat-hint>
-                <mat-icon class="icon-color-custom" matSuffix>account_circle</mat-icon>
-            </mat-form-field>
-        </div>
-        <div class="row  justify-content-center">
-            <mat-form-field appearance="outline">
-                <mat-label>CPF</mat-label>
-                <input formControlName="Cpf" class="icon-color-custom" id="register-cpf" matInput placeholder="Informe o seu CPF">
-                <mat-hint *ngIf="validatorMsg.ContemErro(errosMsg, 'CPF')">{{validatorMsg.BuscarMensagemErro(errosMsg, "CPF")}}</mat-hint>
-                <mat-icon class="icon-color-custom" matSuffix>account_circle</mat-icon>
-            </mat-form-field>
-        </div>
-        <div class="row  justify-content-center">
-            <mat-form-field appearance="outline">
-                <mat-label>Telefone</mat-label>
-                <input formControlName="Telefone" class="icon-color-custom" id="register-telefone" matInput placeholder="Informe o seu Telefone">
-                <mat-hint *ngIf="validatorMsg.ContemErro(errosMsg, 'Telefone')">{{validatorMsg.BuscarMensagemErro(errosMsg, "Telefone")}}</mat-hint>
-                <mat-icon class="icon-color-custom" matSuffix>account_circle</mat-icon>
-            </mat-form-field>
-        </div>
-        <div class="row justify-content-center mt-4">
+<form id="form-register" [formGroup]="form">
+    <div class="row  justify-content-center">
+        <mat-form-field appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input formControlName="Nome" class="icon-color-custom" id="register-nome" matInput
+                placeholder="Informe o seu Nome">
+            <mat-hint class="erro-message" *ngIf="validatorMsg.ContemErro(errosMsg, 'Nome')">
+                {{validatorMsg.BuscarMensagemErro(errosMsg, "Nome")}}</mat-hint>
+            <mat-icon class="icon-color-custom" matSuffix>account_circle</mat-icon>
+        </mat-form-field>
+    </div>
+    <div class="row  justify-content-center">
+        <mat-form-field appearance="outline">
+            <mat-label>CPF</mat-label>
+            <input formControlName="Cpf" class="icon-color-custom" id="register-cpf" matInput
+                placeholder="Informe o seu CPF">
+            <mat-hint class="erro-message" *ngIf="validatorMsg.ContemErro(errosMsg, 'CPF')">
+                {{validatorMsg.BuscarMensagemErro(errosMsg, "CPF")}}</mat-hint>
+            <mat-icon class="icon-color-custom" matSuffix>account_circle</mat-icon>
+        </mat-form-field>
+    </div>
+    <div class="row  justify-content-center">
+        <mat-form-field appearance="outline">
+            <mat-label>Telefone</mat-label>
+            <input formControlName="Telefone" class="icon-color-custom" id="register-telefone" matInput
+                placeholder="Informe o seu Telefone">
+            <mat-hint class="erro-message" *ngIf="validatorMsg.ContemErro(errosMsg, 'Telefone')">
+                {{validatorMsg.BuscarMensagemErro(errosMsg, "Telefone")}}</mat-hint>
+            <mat-icon class="icon-color-custom" matSuffix>account_circle</mat-icon>
+        </mat-form-field>
+    </div>
+    <div class="row justify-content-center align-items-center">
+        <div class="col-4">
             <button id="button-registrar" mat-raised-button color="primary" (click)="NewClient()">Cadastrar</button>
         </div>
-    </form>
-</div>
-
+    </div>
+</form>

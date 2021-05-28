@@ -1,37 +1,50 @@
-<div class="col-3">
-    <form [formGroup]="form">
-    <div class="row  justify-content-center">
-        <mat-form-field appearance="outline">
-            <mat-label>Valor</mat-label>
-            <input formControlName="valor" 
-                type="number"
-                class="text-color-custom"
-                matInput placeholder="Informe o valor desejado">
-            <mat-hint class="erro-message"
-                *ngIf="validatorMsg.ContemErro(errosForm, 'Valor')">
-                {{validatorMsg.BuscarMensagemErro(errosForm, "Valor")}}
-            </mat-hint>
-            <mat-icon class="icon-color-custom" matSuffix>monetization_on</mat-icon>
-        </mat-form-field>
-    </div>
-    <div class="row  justify-content-center">
-        <mat-form-field appearance="fill" (click)="GetContas()">
-            <mat-label>Conta destino</mat-label>
-            <mat-select formControlName="idContaDestino">
-                <mat-option *ngFor="let conta of contas"
-                    [value]="conta.id"> 
-                    {{conta.numero}} - {{conta.nomeCliente}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <small *ngIf="carregandoContas" class="text-color-custom">Carregando...</small>
-    </div>
-    <div class="row justify-content-center mt-4">
-        <button id="button-sacar" 
-                mat-raised-button color="primary" 
-                (click)="Transferir()">
-                Transferir
-        </button>
-    </div>
-    </form>
-</div>
+<mat-accordion>
+    <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-description>
+                Transferência
+                <div style="margin-left: 5%;">
+                    <mat-icon style="margin: 0 auto;">add_circle</mat-icon>
+                </div>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+            <form [formGroup]="form">
+            <div class="row  justify-content-center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Valor</mat-label>
+                    <input formControlName="valor" 
+                        type="number"
+                        class="text-color-custom"
+                        matInput placeholder="Informe o valor desejado">
+                    <mat-hint class="erro-message"
+                        *ngIf="validatorMsg.ContemErro(errosForm, 'Valor')">
+                        {{validatorMsg.BuscarMensagemErro(errosForm, "Valor")}}
+                    </mat-hint>
+                    <mat-icon class="icon-color-custom" matSuffix>monetization_on</mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="row  justify-content-center">
+                <mat-form-field appearance="fill" (click)="GetContas()">
+                    <mat-label>Conta destino</mat-label>
+                    <mat-select formControlName="idContaDestino">
+                        <mat-option *ngFor="let conta of contas"
+                            [value]="conta.id"> 
+                            {{conta.numero}} - {{conta.nomeCliente}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <small *ngIf="carregandoContas" class="text-color-custom">Carregando...</small>
+            </div>
+            <div class="row justify-content-center mt-1">
+                <button id="button-sacar" 
+                        mat-raised-button color="primary" 
+                        (click)="Transferir()">
+                        Transferir
+                </button>
+            </div>
+            </form>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>
+

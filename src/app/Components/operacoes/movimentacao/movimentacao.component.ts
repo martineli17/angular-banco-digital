@@ -14,8 +14,8 @@ export class MovimentacaoComponent {
         private operacoesService: OperacoesService) {
     }
 
-    GetMovimentacoes(): void {
-        if (this.movimentacoes.length > 0) return;
+    GetMovimentacoes(force: boolean = false): void {
+        if (this.movimentacoes.length > 0 && !force) return;
         this.operacoesService.MovimentacoesAsync().subscribe({
             next: response => this.movimentacoes = response,
             error: (error: HttpErrorResponse) =>

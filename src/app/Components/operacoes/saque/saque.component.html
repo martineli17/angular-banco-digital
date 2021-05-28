@@ -1,36 +1,44 @@
-<div class="col-3">
-    <form [formGroup]="form">
-    <div class="row  justify-content-center">
-        <mat-form-field appearance="outline">
-            <mat-label>Valor</mat-label>
-            <input formControlName="valor" 
-                type="number"
-                class="text-color-custom"
-                matInput placeholder="Informe o valor desejado">
-            <mat-hint class="erro-message"
-                *ngIf="validatorMsg.ContemErro(errosForm, 'Valor')">
-                {{validatorMsg.BuscarMensagemErro(errosForm, "Valor")}}
-            </mat-hint>
-            <mat-icon class="icon-color-custom" matSuffix>monetization_on</mat-icon>
-        </mat-form-field>
-    </div>
-    <div class="row  justify-content-center">
-        <mat-form-field appearance="outline">
-            <mat-label>Identificador Caixa Eletrônico</mat-label>
-            <input formControlName="identificadorCaixaEletronico" class="text-color-custom" matInput placeholder="Informe o identificador caixa eletrônico">
-            <mat-hint  class="erro-message"
-                *ngIf="validatorMsg.ContemErro(errosForm, 'Identificador Caixa Eletrônico')">
-                {{validatorMsg.BuscarMensagemErro(errosForm, "Identificador Caixa Eletrônico")}}
-            </mat-hint>
-            <mat-icon class="icon-color-custom" matSuffix>place</mat-icon>
-        </mat-form-field>
-    </div>
-    <div class="row justify-content-center mt-4">
-        <button id="button-sacar" 
-                mat-raised-button color="primary" 
-                (click)="Sacar()">
-                Sacar
-        </button>
-    </div>
-    </form>
-</div>
+<mat-accordion>
+    <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-description>
+                Saque
+                <div style="margin-left: 5%;">
+                    <mat-icon style="margin: 0 auto;">add_circle</mat-icon>
+                </div>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+            <form [formGroup]="form">
+                <div class="row  justify-content-center">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Valor</mat-label>
+                        <input formControlName="valor" type="number" class="text-color-custom" matInput
+                            placeholder="Informe o valor desejado">
+                        <mat-hint class="erro-message" *ngIf="validatorMsg.ContemErro(errosForm, 'Valor')">
+                            {{validatorMsg.BuscarMensagemErro(errosForm, "Valor")}}
+                        </mat-hint>
+                        <mat-icon class="icon-color-custom" matSuffix>monetization_on</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="row  justify-content-center">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Identificador Caixa Eletrônico</mat-label>
+                        <input formControlName="identificadorCaixaEletronico" class="text-color-custom" matInput
+                            placeholder="Informe o identificador caixa eletrônico">
+                        <mat-hint class="erro-message"
+                            *ngIf="validatorMsg.ContemErro(errosForm, 'Identificador Caixa Eletrônico')">
+                            {{validatorMsg.BuscarMensagemErro(errosForm, "Identificador Caixa Eletrônico")}}
+                        </mat-hint>
+                        <mat-icon class="icon-color-custom" matSuffix>place</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="row justify-content-center mt-1">
+                    <button id="button-sacar" mat-raised-button color="primary" (click)="Sacar()">
+                        Sacar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

@@ -1,36 +1,45 @@
 <mat-accordion>
-    <mat-expansion-panel hideToggle>
-        <mat-expansion-panel-header>
-            <mat-panel-description (click)="GetMovimentacoes()">
-                Exibir movimentações
-                <mat-icon style="margin: 0 auto;">add_circle</mat-icon>
-            </mat-panel-description>
-        </mat-expansion-panel-header>
-        <table class="table table-hover table-dark">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Data</th>
-                <th scope="col">Valor</th>
-                <th scope="col">Evento</th>
-                <th scope="col">Tipo</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let movimentacao of movimentacoes; let count = index">
-                <th>{{count+1}}</th>
-                <td>{{movimentacao.dataCriacao | date: 'dd/MM/yyyy hh:mm:ss'}}</td>
-                <td>{{movimentacao.valor | currency}}</td>
-                <td>{{movimentacao.eventoNome}}</td>
-                <td>
-                    <span style="font-size: small; font-family: Arial, Helvetica, sans-serif;"
-                    [ngClass]="{'bg-danger': !movimentacao.isCredito, 
-                                'bg-success': movimentacao.isCredito}"
-                    class="badge m-lg-2">
-                    {{movimentacao.tipoNome}}
-                </span>
-              </tr>
-            </tbody>
-          </table>
-    </mat-expansion-panel>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-description (click)="GetMovimentacoes()">
+        Exibir movimentações
+        <div style="margin-left: 5%;">
+          <mat-icon style="margin: 0 auto;">add_circle</mat-icon>
+
+        </div>
+      </mat-panel-description>
+
+    </mat-expansion-panel-header>
+    <button mat-raised-button color="basic" (click)="GetMovimentacoes(true)" style="margin-left: 4px">
+      <mat-icon color="basic">
+        refresh
+      </mat-icon>
+    </button>
+    <div class="table-responsive">
+      <table class="table table-hover table-dark">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Data</th>
+            <th scope="col">Valor</th>
+            <th scope="col">Evento</th>
+            <th scope="col">Tipo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let movimentacao of movimentacoes; let count = index">
+            <th>{{count+1}}</th>
+            <td>{{movimentacao.dataCriacao | date: 'dd/MM/yyyy h:mm:ss a'}}</td>
+            <td>{{movimentacao.valor | currency}}</td>
+            <td>{{movimentacao.eventoNome}}</td>
+            <td>
+              <span style="font-size: small; font-family: Arial, Helvetica, sans-serif;" [ngClass]="{'bg-danger': !movimentacao.isCredito, 
+                                'bg-success': movimentacao.isCredito}" class="badge m-lg-2">
+                {{movimentacao.tipoNome}}
+              </span>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </mat-expansion-panel>
 </mat-accordion>

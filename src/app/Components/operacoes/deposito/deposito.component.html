@@ -1,51 +1,65 @@
-<div class="col-3">
-    <form [formGroup]="form">
-    <div class="row  justify-content-center">
-        <mat-form-field appearance="outline">
-            <mat-label>Valor</mat-label>
-            <input formControlName="valor" 
-                type="number"
-                class="text-color-custom"
-                matInput placeholder="Informe o valor desejado">
-            <mat-hint class="erro-message"
-                *ngIf="validatorMsg.ContemErro(errosForm, 'Valor')">
-                {{validatorMsg.BuscarMensagemErro(errosForm, "Valor")}}
-            </mat-hint>
-            <mat-icon class="icon-color-custom" matSuffix>monetization_on</mat-icon>
-        </mat-form-field>
-    </div>
-    <div class="row  justify-content-center">
-        <mat-form-field appearance="outline">
-            <mat-label>Credenciador</mat-label>
-            <input formControlName="credenciador"
-                 class="text-color-custom" 
-                 matInput placeholder="Informe o credenciador">
-            <mat-hint  class="erro-message"
-                *ngIf="validatorMsg.ContemErro(errosForm, 'Credenciador')">
-                {{validatorMsg.BuscarMensagemErro(errosForm, "Credenciador")}}
-            </mat-hint>
-            <mat-icon class="icon-color-custom" matSuffix>domain</mat-icon>
-        </mat-form-field>
-    </div>
-    <div class="row  justify-content-center">
-        <mat-form-field appearance="outline">
-            <mat-label>Número Boleto</mat-label>
-            <input formControlName="numeroBoleto" 
-                class="text-color-custom" 
-                matInput placeholder="Informe o número boleto">
-            <mat-hint  class="erro-message"
-                *ngIf="validatorMsg.ContemErro(errosForm, 'Número Boleto')">
-                {{validatorMsg.BuscarMensagemErro(errosForm, "Número Boleto")}}
-            </mat-hint>
-            <mat-icon class="icon-color-custom" matSuffix>horizontal_split</mat-icon>
-        </mat-form-field>
-    </div>
-    <div class="row justify-content-center mt-4">
-        <button id="button-sacar" 
-                mat-raised-button color="primary" 
-                (click)="Depositar()">
-                Depositar
-        </button>
-    </div>
-    </form>
-</div>
+
+
+<mat-accordion>
+    <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-description>
+                Depósito
+                <div style="margin-left: 5%;">
+                    <mat-icon style="margin: 0 auto;">add_circle</mat-icon>
+                </div>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div>
+            <form [formGroup]="form">
+            <div class="row  justify-content-center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Valor</mat-label>
+                    <input formControlName="valor" 
+                        type="number"
+                        class="text-color-custom"
+                        matInput placeholder="Informe o valor desejado">
+                    <mat-hint class="erro-message"
+                        *ngIf="validatorMsg.ContemErro(errosForm, 'Valor')">
+                        {{validatorMsg.BuscarMensagemErro(errosForm, "Valor")}}
+                    </mat-hint>
+                    <mat-icon class="icon-color-custom" matSuffix>monetization_on</mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="row  justify-content-center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Credenciador</mat-label>
+                    <input formControlName="credenciador"
+                         class="text-color-custom" 
+                         matInput placeholder="Informe o credenciador">
+                    <mat-hint  class="erro-message"
+                        *ngIf="validatorMsg.ContemErro(errosForm, 'Credenciador')">
+                        {{validatorMsg.BuscarMensagemErro(errosForm, "Credenciador")}}
+                    </mat-hint>
+                    <mat-icon class="icon-color-custom" matSuffix>domain</mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="row  justify-content-center">
+                <mat-form-field appearance="outline">
+                    <mat-label>Número Boleto</mat-label>
+                    <input formControlName="numeroBoleto" 
+                        class="text-color-custom" 
+                        matInput placeholder="Informe o número boleto">
+                    <mat-hint  class="erro-message"
+                        *ngIf="validatorMsg.ContemErro(errosForm, 'Número Boleto')">
+                        {{validatorMsg.BuscarMensagemErro(errosForm, "Número Boleto")}}
+                    </mat-hint>
+                    <mat-icon class="icon-color-custom" matSuffix>horizontal_split</mat-icon>
+                </mat-form-field>
+            </div>
+            <div class="row justify-content-center mt-1">
+                <button id="button-sacar" 
+                        mat-raised-button color="primary" 
+                        (click)="Depositar()">
+                        Depositar
+                </button>
+            </div>
+            </form>
+        </div>
+    </mat-expansion-panel>
+</mat-accordion>

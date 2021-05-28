@@ -4,6 +4,7 @@ import { NotificacaoService } from "src/app/Core/services/base/notificacao.servi
 import { ClientService } from "src/app/Core/services/client.service";
 import { ValidateErrorsFormService } from "src/app/Shared/form/validador-form";
 import { ValidadorErrosKeys, ValidadorKeys } from "src/app/Shared/model/validador-key.model";
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
     templateUrl: "./login.component.html",
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit{
         private service: ClientService, 
         private formBuilder: FormBuilder, 
         public validatorMsg: ValidateErrorsFormService,
+        public router: Router,
         private notificacao: NotificacaoService) {
     }
 
@@ -36,7 +38,9 @@ export class LoginComponent implements OnInit{
             var result = await this.service.Login(this.form.value);
             if(result === false){
                 this.notificacao.ExibirNotificacao("Cliente não cadastrado!")
+                return;
             }
+            this.router.navigateByUrl("home")
         }
         else{
             this.errosMsg = this.validatorMsg.GetFormValidationErrors(this.form, this.CreateKeysLabelsErrors());
