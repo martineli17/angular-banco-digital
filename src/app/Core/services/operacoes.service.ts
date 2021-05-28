@@ -28,5 +28,5 @@ export class OperacoesService extends HttpClienteBasic{
         this.client.Add<SaqueAddResponse, SaqueAddRequest>("operacao/saque", dados);
 
     MovimentacoesAsync = ():Observable<MovimentacaoResponse[]> =>
-        this.client.Get<MovimentacaoResponse[]>("operacao/movimentacao");
+        this.client.Get<MovimentacaoResponse[]>("operacao/movimentacao?$orderby=dataCriacao");
 }

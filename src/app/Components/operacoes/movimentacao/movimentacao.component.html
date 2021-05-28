@@ -1,0 +1,36 @@
+<mat-accordion>
+    <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+            <mat-panel-description (click)="GetMovimentacoes()">
+                Exibir movimentações
+                <mat-icon style="margin: 0 auto;">add_circle</mat-icon>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <table class="table table-hover table-dark">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Data</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Evento</th>
+                <th scope="col">Tipo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let movimentacao of movimentacoes; let count = index">
+                <th>{{count+1}}</th>
+                <td>{{movimentacao.dataCriacao | date: 'dd/MM/yyyy hh:mm:ss'}}</td>
+                <td>{{movimentacao.valor | currency}}</td>
+                <td>{{GetEventoString(movimentacao.evento)}}</td>
+                <td>
+                    <span style="font-size: small; font-family: Arial, Helvetica, sans-serif;"
+                    [ngClass]="{'bg-danger': !GetTipoBoolean(movimentacao.tipo), 
+                                'bg-success': GetTipoBoolean(movimentacao.tipo)}"
+                    class="badge m-lg-2">
+                    {{GetTipoString(movimentacao.tipo)}}
+                </span>
+              </tr>
+            </tbody>
+          </table>
+    </mat-expansion-panel>
+</mat-accordion>
