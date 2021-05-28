@@ -17,6 +17,7 @@ export class TransferenciaComponent implements OnInit {
     form: FormGroup = {} as FormGroup;
     errosForm: ValidadorErrosKeys[] = [];
     contas: ContaGetModel[] = [];
+    carregandoContas: boolean = false;
     constructor(private formBuilder: FormBuilder,
         public validatorMsg: ValidateErrorsFormService,
         private notificador: NotificacaoService,
@@ -41,7 +42,9 @@ export class TransferenciaComponent implements OnInit {
             this.errosForm = this.validatorMsg.GetFormValidationErrors(this.form, this.CreateKeysLabelsErrors());
     }
 
-    private GetContas = () => {
+    GetContas = () => {
+        if(this.contas.length > 0) return;
+        this.carregandoContas = true;
         this.contaService.GetAllAsync().subscribe({
             next: response => {
                 if(response)
@@ -51,6 +54,9 @@ export class TransferenciaComponent implements OnInit {
             },
             error: (error: HttpErrorResponse) => {
                 this.contaService.ErrorHandler(error, { mensagem404: "Registro não encontrado."});
+            },
+            complete: () => {
+                this.carregandoContas = false;
             }
         })
     }
@@ -58,7 +64,7 @@ export class TransferenciaComponent implements OnInit {
     private CreateFormBuilder = () =>
         this.form = this.formBuilder.group({
             valor: [0, [Validators.required, Validators.min(2)]],
-            idContaDestino: ['', [Validators.required]],
+            idContaDestino: ["", [Validators.required]],
         });
 
     private CreateKeysLabelsErrors = (): ValidadorKeys[] =>

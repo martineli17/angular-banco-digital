@@ -14,6 +14,18 @@
             <mat-icon class="icon-color-custom" matSuffix>monetization_on</mat-icon>
         </mat-form-field>
     </div>
+    <div class="row  justify-content-center">
+        <mat-form-field appearance="fill" (click)="GetContas()">
+            <mat-label>Conta destino</mat-label>
+            <mat-select formControlName="idContaDestino">
+                <mat-option *ngFor="let conta of contas"
+                    [value]="conta.id"> 
+                    {{conta.numero}} - {{conta.nomeCliente}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <small *ngIf="carregandoContas" class="text-color-custom">Carregando...</small>
+    </div>
     <div class="row justify-content-center mt-4">
         <button id="button-sacar" 
                 mat-raised-button color="primary" 

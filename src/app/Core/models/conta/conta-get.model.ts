@@ -7,4 +7,5 @@ export type ContaGetModel = {
     tipo: TipoConta;
     saldo: number;
     ativo: boolean;
+    nomeCliente: string;
 }

@@ -31,7 +31,6 @@ export class RegisterComponent implements OnInit{
 
     NewClient(): void{
         if(this.form.valid){
-            console.log(this.form.value);
             this.service.Register(this.form.value).subscribe({
                 next: response => {
                     this.notificador.ExibirNotificacao("Cadastro realizado com sucesso!");
