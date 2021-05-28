@@ -38,6 +38,6 @@ export class HttpClienteBasic{
         else if(error.status === 404)
             this.notificador.ExibirNotificacao(handlerModel.mensagem404);
         else
-            this.notificador.ExibirNotificacao("Ocorreu um no processamento da operação.");
+            this.notificador.ExibirNotificacao("Ocorreu um erro no processamento da operação.");
     }
 }
