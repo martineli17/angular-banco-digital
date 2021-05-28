@@ -17,11 +17,9 @@ export class ContaService extends HttpClienteBasic{
     SolicitarAsync = (conta: ContaAddRequestModel):Observable<ContaGetModel> => 
         this.client.Add<ContaGetModel,ContaAddRequestModel>("conta", conta);
 
-    ExcluirAsync = ():Observable<boolean> => this.client.Delete<boolean>(`conta`);
+    GetAsync = ():Observable<ContaGetModel> => this.client.Get<ContaGetModel>("conta/cliente");
 
-    GetAsync = ():Observable<ContaGetModel> => this.client.Get<ContaGetModel>(`conta/cliente`);
-
-    GetAllAsync = ():Observable<ContaGetModel[]> => this.client.Get<ContaGetModel[]>(`conta`);
+    GetAllAsync = ():Observable<ContaGetModel[]> => this.client.Get<ContaGetModel[]>("conta");
 
     AtualizarTipoAsync = (conta: ContaAddRequestModel):Observable<ContaGetModel> => 
         this.client.Update<ContaGetModel,ContaAddRequestModel>("conta/tipo", conta);

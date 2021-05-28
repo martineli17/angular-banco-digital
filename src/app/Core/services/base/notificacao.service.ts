@@ -6,7 +6,7 @@ export class NotificacaoService{
     constructor(private snack: MatSnackBar){
     }
 
-    ExibirNotificacao = (mensagem: string, duracao: number = 3000) => {
+    ExibirNotificacao = (mensagem: string, duracao: number = 5000) => {
         this.snack.open(mensagem, "", {
             duration: duracao,
         })

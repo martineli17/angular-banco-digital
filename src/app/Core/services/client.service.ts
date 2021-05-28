@@ -26,7 +26,6 @@ export class ClientService extends HttpClienteBasic{
         try{
             const token = await this.client.Add<string, {}>("autenticacao", cpfCliente).toPromise();
             localStorage.setItem("acess_token",  token);
-            this.client.SetHeaderAuthorizationBearer()
             return true;
         }
         catch{
