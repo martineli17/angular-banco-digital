@@ -83,7 +83,6 @@ export class CartaoComponent implements OnInit {
                 this.FormatarDataVencimentoCartao();
             },
             error: (error: HttpErrorResponse) => {
-                this.cartaoService.ErrorHandler(error, {mensagem404: "Cartão não encontrado"});
                 this.temCartao = false;
             }
         });

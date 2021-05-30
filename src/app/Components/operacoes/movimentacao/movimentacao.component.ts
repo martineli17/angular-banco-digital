@@ -19,7 +19,7 @@ export class MovimentacaoComponent {
         this.operacoesService.MovimentacoesAsync().subscribe({
             next: response => this.movimentacoes = response,
             error: (error: HttpErrorResponse) =>
-                this.operacoesService.ErrorHandler(error, { mensagem404: "Registro não encontrado" }),
+                this.operacoesService.ErrorHandler(error, { mensagem404: "Você não possui uma conta cadastrada!" }),
         });
     }
 }

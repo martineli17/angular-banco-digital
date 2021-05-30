@@ -1,8 +1,12 @@
-<div >
- 
+<div id="container-home-page">
     <div class="mt-1 row justify-content-center align-content-center" style="margin: auto;">
         <img src="../../../../assets/banco.png" alt="">
     </div>
+    <button id="button-logout" 
+            mat-raised-button color="warn"
+            (click)="Logout()">
+        Sair
+    </button>
     <div class="row justify-content-center align-content-center" style="margin: auto;">
         <div class="col-md-5">
             <hr class="color-white" />
@@ -17,16 +21,14 @@
                 <mat-card-subtitle>
                     <p>
                         Faça o gerenciamento da sua conta.
-                        <br/>
+                        <br />
                         Além de gerenciar, também, o seu cartão!
                     </p>
                 </mat-card-subtitle>
                 <mat-card-actions>
-                    <button mat-button 
-                    [routerLink]="['/home/dados']" 
-                    routerLinkActive="router-link-active">
-                    Acessar
-                </button>
+                    <button mat-button [routerLink]="['/home/dados']" routerLinkActive="router-link-active">
+                        Acessar
+                    </button>
                 </mat-card-actions>
             </mat-card>
         </div>
@@ -38,14 +40,12 @@
                 <mat-card-subtitle>
                     <p>
                         Realize operações com a sua conta.
-                        <br/>
+                        <br />
                         Além de visualizar as suas movimentações!
                     </p>
                 </mat-card-subtitle>
                 <mat-card-actions>
-                    <button mat-button 
-                    [routerLink]="['/home/operacoes']" 
-                    routerLinkActive="router-link-active" >
+                    <button mat-button [routerLink]="['/home/operacoes']" routerLinkActive="router-link-active">
                         Acessar
                     </button>
                 </mat-card-actions>

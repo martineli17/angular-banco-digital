@@ -30,7 +30,7 @@ export class SaqueComponent implements OnInit {
                 next: response =>
                     this.notificador.ExibirNotificacao("Saque realizado com sucesso."),
                 error: (error: HttpErrorResponse) =>
-                    this.operacoesService.ErrorHandler(error, { mensagem404: "Registro não encontrado" }),
+                    this.operacoesService.ErrorHandler(error, { mensagem404: "Você não possui uma conta cadastrada!" }),
             });
         }
         else

@@ -72,7 +72,6 @@ export class ContaComponent implements OnInit {
     private  GetDadosInit(): void {
         this.contaService.GetAsync().subscribe({
             next: response => {
-                console.log(response)
                 this.dadosConta = response;
                 this.temConta = true;
             },

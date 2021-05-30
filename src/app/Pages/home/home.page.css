@@ -10,3 +10,13 @@ img{
     border-bottom: 5px solid white;
     float: right;
 }
+
+#button-logout{
+    position: absolute; 
+    right: 10px; 
+    top: 10px
+}
+
+#container-home-page{
+    position: relative;
+}

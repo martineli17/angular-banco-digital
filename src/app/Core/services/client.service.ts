@@ -3,6 +3,7 @@ import { Observable } from "rxjs";
 import { LoginComponent } from "src/app/Components/user/login/login.component";
 import LoginModel from "../models/cliente/login.model";
 import { RegisterClient } from "../models/register-client.model";
+import { AutenticacaoService } from "./base/autenticacao.service";
 import { HttpClientService, HttpClienteBasic } from "./base/http-client.service";
 import { NotificacaoService } from "./base/notificacao.service";
 
@@ -22,10 +23,9 @@ export class ClientService extends HttpClienteBasic{
     }
 
     async Login(cpfCliente: LoginModel): Promise<boolean>{
-        var retorno = true;
         try{
             const token = await this.client.Add<string, {}>("autenticacao", cpfCliente).toPromise();
-            localStorage.setItem("acess_token",  token);
+            AutenticacaoService.Login(token);
             return true;
         }
         catch{
